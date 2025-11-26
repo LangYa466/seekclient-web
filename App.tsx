@@ -6,12 +6,35 @@ import { ExternalLink, LogIn, X } from 'lucide-react';
 const App: React.FC = () => {
     const [mounted, setMounted] = useState(false);
     const [showLoginModal, setShowLoginModal] = useState(false);
+    const [isClosingModal, setIsClosingModal] = useState(false);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [usernameAnimating, setUsernameAnimating] = useState(false);
+    const [passwordAnimating, setPasswordAnimating] = useState(false);
 
     useEffect(() => {
         setMounted(true);
     }, []);
+
+    const handleCloseLoginModal = () => {
+        setIsClosingModal(true);
+        setTimeout(() => {
+            setShowLoginModal(false);
+            setIsClosingModal(false);
+        }, 300);
+    };
+
+    const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setUsername(e.target.value);
+        setUsernameAnimating(true);
+        setTimeout(() => setUsernameAnimating(false), 300);
+    };
+
+    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setPassword(e.target.value);
+        setPasswordAnimating(true);
+        setTimeout(() => setPasswordAnimating(false), 300);
+    };
 
     const handleLoginSubmit = () => {
         const params = new URLSearchParams({
@@ -19,7 +42,7 @@ const App: React.FC = () => {
             password: password
         });
         window.open(`http://localhost:8888/login?${params.toString()}`);
-        setShowLoginModal(false);
+        handleCloseLoginModal();
     };
 
     return (
@@ -80,9 +103,9 @@ const App: React.FC = () => {
 
             {showLoginModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-                    <div className="bg-[#0a0a0a] border border-neutral-800 rounded-2xl w-full max-w-md p-8 relative shadow-2xl animate-fade-in">
+                    <div className={`bg-[#0a0a0a] border border-neutral-800 rounded-2xl w-full max-w-md p-8 relative shadow-2xl ${isClosingModal ? 'animate-fade-out' : 'animate-fade-in'}`}>
                         <button
-                            onClick={() => setShowLoginModal(false)}
+                            onClick={handleCloseLoginModal}
                             className="absolute top-4 right-4 text-neutral-500 hover:text-white transition-colors"
                         >
                             <X size={24} />
@@ -96,8 +119,8 @@ const App: React.FC = () => {
                                 <input
                                     type="text"
                                     value={username}
-                                    onChange={(e) => setUsername(e.target.value)}
-                                    className="w-full bg-neutral-900 border border-neutral-700 rounded-lg px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:border-fuchsia-500 focus:ring-1 focus:ring-fuchsia-500 transition-all"
+                                    onChange={handleUsernameChange}
+                                    className={`w-full bg-neutral-900 border border-neutral-700 rounded-lg px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:border-neutral-500 focus:ring-1 focus:ring-neutral-500 transition-all ${usernameAnimating ? 'animate-input-shift' : ''}`}
                                     placeholder="Enter username"
                                 />
                             </div>
@@ -107,8 +130,8 @@ const App: React.FC = () => {
                                 <input
                                     type="password"
                                     value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    className="w-full bg-neutral-900 border border-neutral-700 rounded-lg px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:border-fuchsia-500 focus:ring-1 focus:ring-fuchsia-500 transition-all"
+                                    onChange={handlePasswordChange}
+                                    className={`w-full bg-neutral-900 border border-neutral-700 rounded-lg px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:border-neutral-500 focus:ring-1 focus:ring-neutral-500 transition-all ${passwordAnimating ? 'animate-input-shift' : ''}`}
                                     placeholder="Enter password"
                                 />
                             </div>
