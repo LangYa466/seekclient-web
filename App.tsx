@@ -101,8 +101,8 @@ const App: React.FC = () => {
                 </div>
             </main>
 
-            {showLoginModal && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+            {(showLoginModal || isClosingModal) && (
+                <div className={`fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm transition-all duration-300 ${isClosingModal ? 'bg-black/0' : 'bg-black/80'}`}>
                     <div className={`bg-[#0a0a0a] border border-neutral-800 rounded-2xl w-full max-w-md p-8 relative shadow-2xl ${isClosingModal ? 'animate-fade-out' : 'animate-fade-in'}`}>
                         <button
                             onClick={handleCloseLoginModal}
