@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import BackgroundEffect from './components/BackgroundEffect';
 import { TopBar } from './components/TopBar';
 import { ExternalLink, LogIn, X } from 'lucide-react';
