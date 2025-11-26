@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SeekClient</title>
@@ -11,56 +11,62 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Raleway', 'sans-serif'],
-            },
-            colors: {
-              brand: {
-                dark: '#0a0a0a',
-              }
-            },
-            animation: {
-              'fade-in': 'fadeIn 1s ease-out forwards',
-              'slide-up': 'slideUp 0.8s ease-out forwards',
-              'rainbow': 'rainbow 3s linear infinite',
-            },
-            keyframes: {
-              fadeIn: {
-                '0%': { opacity: '0' },
-                '100%': { opacity: '1' },
-              },
-              slideUp: {
-                '0%': { opacity: '0', transform: 'translateY(20px)' },
-                '100%': { opacity: '1', transform: 'translateY(0)' },
-              },
-              rainbow: {
-                '0%': { 'background-position': '0% 50%' },
-                '100%': { 'background-position': '200% 50%' },
-              }
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Raleway', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0a0a0a',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                        'rainbow': 'rainbow 3s linear infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        rainbow: {
+                            '0%': { 'background-position': '0% 50%' },
+                            '100%': { 'background-position': '200% 50%' },
+                        }
+                    }
+                }
             }
-          }
         }
-      }
     </script>
     <style>
-      body {
-        background-color: #050505;
-        color: #ffffff;
-        overflow-x: hidden;
-      }
-      /* Custom selection color */
-      ::selection {
-        background: #ff00ff;
-        color: #fff;
-      }
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        ::selection {
+            background: #ff00ff;
+            color: #fff;
+        }
+
+        .rainbow-gradient {
+            background: linear-gradient(
+                    90deg,
+                    #ff0000, #ff7f00, #ffff00, #00ff00, #00ffff, #0000ff, #8b00ff, #ff0000
+            );
+            background-size: 200% auto;
+        }
     </style>
-<link rel="stylesheet" href="/index.css">
 </head>
-  <body>
-    <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
+<body>
+<div id="root"></div>
+<script type="module" src="/index.tsx"></script>
 </body>
 </html>
