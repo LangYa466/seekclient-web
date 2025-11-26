@@ -4,17 +4,12 @@ import { TopBar } from './components/TopBar';
 import { ExternalLink, LogIn, X } from 'lucide-react';
 
 const App: React.FC = () => {
-    const [mounted, setMounted] = useState(false);
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [isClosingModal, setIsClosingModal] = useState(false);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [usernameAnimating, setUsernameAnimating] = useState(false);
     const [passwordAnimating, setPasswordAnimating] = useState(false);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
 
     const handleCloseLoginModal = () => {
         setIsClosingModal(true);
@@ -51,7 +46,7 @@ const App: React.FC = () => {
             <BackgroundEffect />
 
             <main className="flex-grow flex flex-col items-center justify-center p-6 relative z-10 min-h-[90vh]">
-                <div className={`transition-all duration-1000 ease-out transform ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                <div>
                     <h1 className="text-6xl md:text-9xl font-black tracking-tighter mb-2 text-center select-none flex flex-col md:block items-center">
                         <span className="relative inline-block">
                             <span className="absolute inset-0 rainbow-gradient bg-clip-text text-transparent blur-lg animate-rainbow opacity-80" aria-hidden="true">
@@ -102,8 +97,8 @@ const App: React.FC = () => {
             </main>
 
             {(showLoginModal || isClosingModal) && (
-                <div className={`fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm transition-all duration-300 ${isClosingModal ? 'bg-black/0' : 'bg-black/80'}`}>
-                    <div className={`bg-[#0a0a0a] border border-neutral-800 rounded-2xl w-full max-w-md p-8 relative shadow-2xl ${isClosingModal ? 'animate-fade-out' : 'animate-fade-in'}`}>
+                <div className={`fixed inset-0 z-50 flex items-center justify-center p-4 ${isClosingModal ? 'bg-black/0' : 'bg-black/80'} transition-all duration-300`}>
+                    <div className={`bg-[#0a0a0a] border border-neutral-800 rounded-2xl w-full max-w-md p-8 relative shadow-2xl ${isClosingModal ? 'animate-modal-slide-down' : 'animate-modal-slide-up'}`}>
                         <button
                             onClick={handleCloseLoginModal}
                             className="absolute top-4 right-4 text-neutral-500 hover:text-white transition-colors"
