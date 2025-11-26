@@ -40,7 +40,7 @@ const App: React.FC = () => {
           {/* Subtitle / Description */}
           <div className="text-center space-y-4 mb-12">
              <p className="text-neutral-400 text-lg md:text-2xl font-semibold tracking-wide uppercase opacity-90">
-              绕过布吉岛 Hypixel 服务器
+              Bypass Hypixel Heypixel
             </p>
             <p className="text-neutral-500 text-sm md:text-base font-medium tracking-widest uppercase">
               Raising the standards. Unparalleled Experience.
