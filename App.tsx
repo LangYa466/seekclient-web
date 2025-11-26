@@ -115,7 +115,7 @@ const App: React.FC = () => {
                                     type="text"
                                     value={username}
                                     onChange={handleUsernameChange}
-                                    className={`w-full bg-neutral-900 border border-neutral-700 rounded-lg px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:border-neutral-500 focus:ring-1 focus:ring-neutral-500 transition-all ${usernameAnimating ? 'animate-input-shift' : ''}`}
+                                    className={`w-full bg-neutral-900 border border-neutral-700 rounded-lg px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:border-neutral-500 focus:ring-1 focus:ring-neutral-500 shadow-sm hover:shadow-md transition-shadow ${usernameAnimating ? 'animate-input-shift' : ''}`}
                                     placeholder="Enter username"
                                 />
                             </div>
@@ -126,7 +126,7 @@ const App: React.FC = () => {
                                     type="password"
                                     value={password}
                                     onChange={handlePasswordChange}
-                                    className={`w-full bg-neutral-900 border border-neutral-700 rounded-lg px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:border-neutral-500 focus:ring-1 focus:ring-neutral-500 transition-all ${passwordAnimating ? 'animate-input-shift' : ''}`}
+                                    className={`w-full bg-neutral-900 border border-neutral-700 rounded-lg px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:border-neutral-500 focus:ring-1 focus:ring-neutral-500 shadow-sm hover:shadow-md transition-shadow ${passwordAnimating ? 'animate-input-shift' : ''}`}
                                     placeholder="Enter password"
                                 />
                             </div>
