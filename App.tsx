@@ -32,6 +32,11 @@ const App: React.FC = () => {
     };
 
     const handleLoginSubmit = () => {
+        if (!username.trim() || !password.trim()) {
+            alert('Please enter both username and password');
+            return;
+        }
+
         const params = new URLSearchParams({
             username: username,
             password: password
