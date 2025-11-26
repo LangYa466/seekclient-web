@@ -33,7 +33,7 @@ const WarnPage: React.FC = () => {
         },
         '1': {
             title: '登录成功',
-            message: '欢迎回到 Seek Client',
+            message: '欢迎回来',
             color: 'text-green-500',
             borderColor: 'border-green-500/50',
             bgGlow: 'shadow-[0_0_50px_-12px_rgba(34,197,94,0.5)]',
