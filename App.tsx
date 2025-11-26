@@ -15,7 +15,8 @@ const WarnPage: React.FC = () => {
         let code = '0';
 
         if (search.includes('=')) {
-            code = search.split('=')[1];
+            const parts = search.split('=');
+            code = parts[1] || '0';
         }
 
         setStatus(code);
@@ -103,7 +104,6 @@ const WarnPage: React.FC = () => {
         <div className="flex-grow flex flex-col items-center justify-center p-6 relative z-10 min-h-[80vh]">
             <div className={`relative bg-[#0a0a0a] border ${currentStatus.borderColor} rounded-2xl w-full max-w-lg p-10 shadow-2xl ${currentStatus.bgGlow} animate-modal-slide-up`}>
                 <div className="flex flex-col items-center text-center space-y-6">
-                    {/* Icon Ring */}
                     <div className={`p-4 rounded-full bg-neutral-900 border border-neutral-800 ${currentStatus.color}`}>
                         <IconComponent size={64} strokeWidth={1.5} />
                     </div>
@@ -276,7 +276,8 @@ const Home: React.FC = () => {
 };
 
 const App: React.FC = () => {
-    const isWarnPage = window.location.pathname === '/warn';
+    const pathname = window.location.pathname;
+    const isWarnPage = pathname === '/warn' || pathname.startsWith('/warn?');
 
     return (
         <div className="relative min-h-screen flex flex-col font-sans text-white bg-[#050505] overflow-hidden selection:bg-fuchsia-500 selection:text-white">
@@ -301,7 +302,7 @@ const App: React.FC = () => {
                     rel="noopener noreferrer"
                     className="mt-2 md:mt-0 cursor-pointer transition-colors hover:text-blue-400"
                 >
-                    &copy; {new Date().getFullYear()} COOLTEAM. ALL RIGHTS RESERVED.
+                    &copy; {new Date().getFullYear()} COOL TEAM. ALL RIGHTS RESERVED.
                 </a>
             </footer>
         </div>
@@ -309,3 +310,4 @@ const App: React.FC = () => {
 };
 
 export default App;
+
